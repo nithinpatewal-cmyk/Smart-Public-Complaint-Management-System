@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Citizens | CivicConnect Admin</title>
+
+    <link rel="stylesheet" href="../css/admin/citizens.css">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- Sidebar -->
+
+    <div class="sidebar">
+
+        <h2 class="logo">
+            <i class="fa-solid fa-city"></i>
+            CivicConnect
+        </h2>
+
+        <a href="dashboard.html">
+            <i class="fa-solid fa-gauge"></i>
+            Dashboard
+        </a>
+
+        <a href="complaints.html">
+            <i class="fa-solid fa-list-check"></i>
+            Complaints
+        </a>
+
+        <a href="citizens.html" class="active">
+            <i class="fa-solid fa-users"></i>
+            Citizens
+        </a>
+
+        <a href="departments.html">
+            <i class="fa-solid fa-building"></i>
+            Departments
+        </a>
+
+        <a href="reports.html">
+            <i class="fa-solid fa-chart-column"></i>
+            Reports
+        </a>
+
+        <a href="settings.html">
+            <i class="fa-solid fa-gear"></i>
+            Settings
+        </a>
+
+        <a href="../login.html">
+            <i class="fa-solid fa-right-from-bracket"></i>
+            Logout
+        </a>
+
+    </div>
+
+    <!-- Main Content -->
+
+    <div class="main">
+
+        <h1>Registered Citizens</h1>
+
+        <!-- Statistics -->
+
+        <div class="cards">
+
+            <div class="card blue">
+
+                <h2 id="totalCitizens">0</h2>
+
+                <p>Total Citizens</p>
+
+            </div>
+
+            <div class="card green">
+
+                <h2 id="activeCitizens">0</h2>
+
+                <p>Active Citizens</p>
+
+            </div>
+
+            <div class="card orange">
+
+                <h2 id="totalComplaints">0</h2>
+
+                <p>Total Complaints</p>
+
+            </div>
+
+        </div>
+
+        <!-- Search -->
+
+        <div class="search-box">
+
+            <input
+                type="text"
+                id="searchCitizen"
+                placeholder="Search Citizen Name or Email">
+
+        </div>
+
+        <!-- Citizens Table -->
+
+        <div class="table-box">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>Name</th>
+
+                        <th>Email</th>
+
+                        <th>Phone</th>
+
+                        <th>Complaints</th>
+
+                        <th>Status</th>
+
+                        <th>Action</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody id="citizenTable">
+
+                    <!-- JavaScript will load data -->
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="../js/admin/citizens.js"></script>
+
+</body>
+
+</html>

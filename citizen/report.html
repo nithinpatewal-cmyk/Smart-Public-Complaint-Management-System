@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Report Complaint | CivicConnect</title>
+
+<link rel="stylesheet" href="../css/citizen/report.css">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<link rel="stylesheet"
+href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="container">
+
+<!-- Sidebar -->
+
+<div class="sidebar">
+
+<h2 class="logo">
+
+<i class="fa-solid fa-city"></i>
+
+CivicConnect
+
+</h2>
+
+<a href="dashboard.html">
+
+<i class="fa-solid fa-house"></i>
+
+Dashboard
+
+</a>
+
+<a href="report.html" class="active">
+
+<i class="fa-solid fa-circle-exclamation"></i>
+
+Report Complaint
+
+</a>
+
+<a href="my-complaints.html">
+
+<i class="fa-solid fa-folder-open"></i>
+
+My Complaints
+
+</a>
+
+<a href="notifications.html">
+
+<i class="fa-solid fa-bell"></i>
+
+Notifications
+
+</a>
+
+<a href="profile.html">
+
+<i class="fa-solid fa-user"></i>
+
+Profile
+
+</a>
+
+<a href="settings.html">
+
+<i class="fa-solid fa-gear"></i>
+
+Settings
+
+</a>
+
+<a href="../login.html">
+
+<i class="fa-solid fa-right-from-bracket"></i>
+
+Logout
+
+</a>
+
+</div>
+
+<!-- Main -->
+
+<div class="main">
+
+<h1>
+
+<i class="fa-solid fa-camera"></i>
+
+Report New Complaint
+
+</h1>
+
+<form id="complaintForm">
+
+<div class="form-grid">
+
+<div>
+
+<label>Complaint ID</label>
+
+<input type="text" id="complaintId" readonly>
+
+</div>
+
+<div>
+
+<label>Date</label>
+
+<input type="text" id="date" readonly>
+
+</div>
+
+<div>
+
+<label>Time</label>
+
+<input type="text" id="time" readonly>
+
+</div>
+
+<div>
+
+<label>Category</label>
+
+<select id="category" required>
+
+<option value="">Select Category</option>
+
+<option>Road Damage</option>
+
+<option>Garbage</option>
+
+<option>Street Light</option>
+
+<option>Water Leakage</option>
+
+</select>
+
+</div>
+
+<div>
+
+<label>Priority</label>
+
+<select id="priority">
+
+<option>Low</option>
+
+<option>Medium</option>
+
+<option>High</option>
+
+</select>
+
+</div>
+
+<div>
+
+<label>Complaint Title</label>
+
+<input
+type="text"
+id="title"
+placeholder="Enter Complaint Title"
+required>
+
+</div>
+
+</div>
+
+<label>Description</label>
+
+<textarea
+id="description"
+rows="5"
+placeholder="Describe the problem..."
+required></textarea>
+
+<label>Upload Photo</label>
+
+<input
+type="file"
+id="photo"
+accept="image/*"
+required>
+
+<img id="preview">
+
+<h3>Current Location</h3>
+
+<div class="location-box">
+
+<p>
+
+Latitude :
+
+<span id="latitude">Fetching...</span>
+
+</p>
+
+<p>
+
+Longitude :
+
+<span id="longitude">Fetching...</span>
+
+</p>
+
+<p>
+
+Address :
+
+<span id="address">Fetching...</span>
+
+</p>
+
+</div>
+
+<div id="map"></div>
+
+<button type="submit">
+
+<i class="fa-solid fa-paper-plane"></i>
+
+Submit Complaint
+
+</button>
+
+</form>
+
+</div>
+
+</div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<script src="../js/citizen/report.js"></script>
+
+</body>
+
+</html>

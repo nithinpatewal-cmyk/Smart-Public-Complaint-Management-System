@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Department Dashboard | CivicConnect</title>
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+rel="stylesheet">
+
+<link rel="stylesheet" href="../css/department.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+<!-- Sidebar -->
+
+<aside class="sidebar">
+
+<div class="logo">
+
+<i class="fa-solid fa-city"></i>
+
+<h2>CivicConnect</h2>
+
+</div>
+
+<ul>
+
+<li class="active">
+<a href="dashboard.html">
+<i class="fa-solid fa-house"></i>
+Dashboard
+</a>
+</li>
+
+<li>
+<a href="assigned-complaints.html">
+<i class="fa-solid fa-list-check"></i>
+Assigned Complaints
+</a>
+</li>
+
+<li>
+<a href="update-status.html">
+<i class="fa-solid fa-rotate"></i>
+Update Status
+</a>
+</li>
+
+<li>
+<a href="upload-resolution.html">
+<i class="fa-solid fa-camera"></i>
+Upload Resolution
+</a>
+</li>
+
+<li>
+<a href="reports.html">
+<i class="fa-solid fa-chart-column"></i>
+Reports
+</a>
+</li>
+
+<li>
+<a href="profile.html">
+<i class="fa-solid fa-user"></i>
+Profile
+</a>
+</li>
+
+<li>
+<a href="../login.html">
+<i class="fa-solid fa-right-from-bracket"></i>
+Logout
+</a>
+</li>
+
+</ul>
+
+</aside>
+
+<!-- Main -->
+
+<main class="main-content">
+
+<header>
+
+<div>
+
+<h1>Department Dashboard</h1>
+
+<p>Welcome, Department Officer 👋</p>
+
+</div>
+
+<div class="profile">
+
+<i class="fa-solid fa-bell"></i>
+
+<img src="../images/profile.png" alt="Profile">
+
+</div>
+
+</header>
+
+<!-- Statistics -->
+
+<section class="cards">
+
+<div class="card blue">
+
+<i class="fa-solid fa-folder-open"></i>
+
+<h2 id="totalComplaints">0</h2>
+
+<p>Total Complaints</p>
+
+</div>
+
+<div class="card red">
+
+<i class="fa-solid fa-hourglass-half"></i>
+
+<h2 id="pendingComplaints">0</h2>
+
+<p>Pending</p>
+
+</div>
+
+<div class="card orange">
+
+<i class="fa-solid fa-spinner"></i>
+
+<h2 id="progressComplaints">0</h2>
+
+<p>In Progress</p>
+
+</div>
+
+<div class="card green">
+
+<i class="fa-solid fa-circle-check"></i>
+
+<h2 id="resolvedComplaints">0</h2>
+
+<p>Resolved</p>
+
+</div>
+
+</section>
+
+<!-- Quick Actions -->
+
+<section class="actions">
+
+<h2>Quick Actions</h2>
+
+<div class="buttons">
+
+<a href="assigned-complaints.html" class="btn">
+Assigned Complaints
+</a>
+
+<a href="update-status.html" class="btn">
+Update Status
+</a>
+
+<a href="upload-resolution.html" class="btn">
+Upload Resolution
+</a>
+
+<a href="reports.html" class="btn">
+Reports
+</a>
+
+</div>
+
+</section>
+
+<!-- Complaint Table -->
+
+<section class="table-section">
+
+<h2>Recent Complaints</h2>
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>Complaint ID</th>
+
+<th>Citizen</th>
+
+<th>Category</th>
+
+<th>Status</th>
+
+<th>Date</th>
+
+<th>Action</th>
+
+</tr>
+
+</thead>
+
+<tbody id="complaintsTable">
+
+<!-- Loaded automatically from Django -->
+
+</tbody>
+
+</table>
+
+</section>
+
+</main>
+
+</div>
+
+<script src="../js/department.js"></script>
+
+</body>
+
+</html>

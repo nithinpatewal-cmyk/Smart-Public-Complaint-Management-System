@@ -1,0 +1,258 @@
+/* Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:#f5f7fa;
+    color:#333;
+}
+
+/* ===========================
+   NAVBAR
+=========================== */
+
+.navbar{
+    background:#0b5ed7;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:18px 8%;
+}
+
+.logo{
+    color:#fff;
+    font-size:28px;
+    font-weight:700;
+}
+
+.logo i{
+    margin-right:8px;
+}
+
+.navbar ul{
+    list-style:none;
+    display:flex;
+    align-items:center;
+}
+
+.navbar ul li{
+    margin-left:25px;
+}
+
+.navbar ul li a{
+    text-decoration:none;
+    color:#fff;
+    font-size:17px;
+    transition:.3s;
+}
+
+.navbar ul li a:hover,
+.navbar ul li a.active{
+    color:#ffd43b;
+}
+
+.register-btn{
+    background:#ffc107;
+    color:#000 !important;
+    padding:10px 18px;
+    border-radius:8px;
+    font-weight:600;
+}
+
+/* ===========================
+   HERO
+=========================== */
+
+.hero{
+    background:linear-gradient(135deg,#0b5ed7,#00b4db);
+    color:white;
+    text-align:center;
+    padding:80px 10%;
+}
+
+.hero h1{
+    font-size:48px;
+    margin-bottom:20px;
+}
+
+.hero p{
+    font-size:20px;
+    max-width:800px;
+    margin:auto;
+    line-height:1.8;
+}
+
+/* ===========================
+   ABOUT
+=========================== */
+
+.about{
+    padding:70px 8%;
+}
+
+.container{
+    display:flex;
+    gap:30px;
+    flex-wrap:wrap;
+    justify-content:center;
+}
+
+.card{
+    background:white;
+    width:450px;
+    padding:35px;
+    border-radius:15px;
+    text-align:center;
+    box-shadow:0 10px 25px rgba(0,0,0,.1);
+    transition:.4s;
+}
+
+.card:hover{
+    transform:translateY(-10px);
+}
+
+.card i{
+    font-size:45px;
+    color:#0b5ed7;
+    margin-bottom:20px;
+}
+
+.card h2{
+    margin-bottom:15px;
+    color:#0b5ed7;
+}
+
+.card p{
+    line-height:1.8;
+}
+
+/* ===========================
+   FEATURES
+=========================== */
+
+.features{
+    background:#eef5ff;
+    padding:70px 8%;
+    text-align:center;
+}
+
+.features h2{
+    margin-bottom:40px;
+    color:#0b5ed7;
+    font-size:36px;
+}
+
+.feature-container{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:30px;
+}
+
+.feature-box{
+    background:white;
+    padding:30px;
+    border-radius:15px;
+    box-shadow:0 10px 20px rgba(0,0,0,.08);
+    transition:.4s;
+}
+
+.feature-box:hover{
+    transform:translateY(-10px);
+}
+
+.feature-box i{
+    font-size:45px;
+    color:#0b5ed7;
+    margin-bottom:20px;
+}
+
+.feature-box h3{
+    margin-bottom:15px;
+}
+
+.feature-box p{
+    line-height:1.7;
+}
+
+/* ===========================
+   PROJECT
+=========================== */
+
+.project{
+    padding:80px 10%;
+    text-align:center;
+}
+
+.project-content{
+    background:white;
+    padding:50px;
+    border-radius:15px;
+    box-shadow:0 10px 25px rgba(0,0,0,.1);
+}
+
+.project-content h2{
+    color:#0b5ed7;
+    margin-bottom:20px;
+    font-size:36px;
+}
+
+.project-content p{
+    font-size:18px;
+    line-height:1.8;
+}
+
+/* ===========================
+   FOOTER
+=========================== */
+
+footer{
+    background:#0b5ed7;
+    color:white;
+    text-align:center;
+    padding:20px;
+    margin-top:50px;
+}
+
+/* ===========================
+   RESPONSIVE
+=========================== */
+
+@media(max-width:768px){
+
+.navbar{
+    flex-direction:column;
+}
+
+.navbar ul{
+    margin-top:15px;
+    flex-wrap:wrap;
+    justify-content:center;
+}
+
+.navbar ul li{
+    margin:10px;
+}
+
+.hero h1{
+    font-size:35px;
+}
+
+.hero p{
+    font-size:17px;
+}
+
+.card{
+    width:100%;
+}
+
+.project-content{
+    padding:30px;
+}
+
+}

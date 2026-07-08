@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Admin Dashboard | CivicConnect</title>
+
+<link rel="stylesheet" href="../css/admin/dashboard.css">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+rel="stylesheet">
+
+</head>
+
+<body>
+
+<!-- Sidebar -->
+
+<div class="sidebar">
+
+<h2 class="logo">
+
+<i class="fa-solid fa-city"></i>
+
+CivicConnect
+
+</h2>
+
+<a href="dashboard.html" class="active">
+
+<i class="fa-solid fa-gauge"></i>
+
+Dashboard
+
+</a>
+
+<a href="complaints.html">
+
+<i class="fa-solid fa-list-check"></i>
+
+Complaints
+
+</a>
+
+<a href="citizens.html">
+
+<i class="fa-solid fa-users"></i>
+
+Citizens
+
+</a>
+
+<a href="departments.html">
+
+<i class="fa-solid fa-building"></i>
+
+Departments
+
+</a>
+
+<a href="reports.html">
+
+<i class="fa-solid fa-chart-column"></i>
+
+Reports
+
+</a>
+
+<a href="settings.html">
+
+<i class="fa-solid fa-gear"></i>
+
+Settings
+
+</a>
+
+<a href="../login.html">
+
+<i class="fa-solid fa-right-from-bracket"></i>
+
+Logout
+
+</a>
+
+</div>
+
+<!-- Main Content -->
+
+<div class="main">
+
+<div class="header">
+
+<div>
+
+<h1>Admin Dashboard</h1>
+
+<p>Welcome Administrator 👋</p>
+
+</div>
+
+<div>
+
+<i class="fa-solid fa-bell fa-xl"></i>
+
+</div>
+
+</div>
+
+<!-- Dashboard Cards -->
+
+<div class="cards">
+
+<div class="card">
+
+<h2 id="totalComplaints">0</h2>
+
+<p>Total Complaints</p>
+
+</div>
+
+<div class="card">
+
+<h2 id="pendingComplaints">0</h2>
+
+<p>Pending</p>
+
+</div>
+
+<div class="card">
+
+<h2 id="acceptedComplaints">0</h2>
+
+<p>Accepted</p>
+
+</div>
+
+<div class="card">
+
+<h2 id="rejectedComplaints">0</h2>
+
+<p>Rejected</p>
+
+</div>
+
+</div>
+
+<!-- Complaint Table -->
+
+<div class="table-box">
+
+<h2 style="margin-bottom:20px;">Recent Complaints</h2>
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>ID</th>
+
+<th>Citizen</th>
+
+<th>Category</th>
+
+<th>Status</th>
+
+<th>Action</th>
+
+</tr>
+
+</thead>
+
+<tbody id="complaintTable">
+
+<tr>
+
+<td colspan="5" style="text-align:center;">
+
+No complaints found
+
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+<script src="../js/admin/dashboard.js"></script>
+
+</body>
+
+</html>

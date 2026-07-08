@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Departments | CivicConnect Admin</title>
+
+<link rel="stylesheet" href="../css/admin/departments.css">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+<!-- Sidebar -->
+
+<div class="sidebar">
+
+<h2 class="logo">
+
+<i class="fa-solid fa-city"></i>
+
+CivicConnect
+
+</h2>
+
+<a href="dashboard.html">
+<i class="fa-solid fa-gauge"></i>
+Dashboard
+</a>
+
+<a href="complaints.html">
+<i class="fa-solid fa-list-check"></i>
+Complaints
+</a>
+
+<a href="citizens.html">
+<i class="fa-solid fa-users"></i>
+Citizens
+</a>
+
+<a href="departments.html" class="active">
+<i class="fa-solid fa-building"></i>
+Departments
+</a>
+
+<a href="reports.html">
+<i class="fa-solid fa-chart-column"></i>
+Reports
+</a>
+
+<a href="settings.html">
+<i class="fa-solid fa-gear"></i>
+Settings
+</a>
+
+<a href="../login.html">
+<i class="fa-solid fa-right-from-bracket"></i>
+Logout
+</a>
+
+</div>
+
+<!-- Main -->
+
+<div class="main">
+
+<h1>Departments</h1>
+
+<!-- Cards -->
+
+<div class="cards">
+
+<div class="card">
+
+<h2 id="totalDepartments">4</h2>
+
+<p>Total Departments</p>
+
+</div>
+
+<div class="card">
+
+<h2 id="activeDepartments">4</h2>
+
+<p>Active Departments</p>
+
+</div>
+
+<div class="card">
+
+<h2 id="assignedComplaints">0</h2>
+
+<p>Assigned Complaints</p>
+
+</div>
+
+</div>
+
+<!-- Search -->
+
+<div class="search-box">
+
+<input
+type="text"
+id="searchDepartment"
+placeholder="Search Department">
+
+</div>
+
+<!-- Table -->
+
+<div class="table-box">
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>Department</th>
+
+<th>Head</th>
+
+<th>Complaints</th>
+
+<th>Status</th>
+
+<th>Action</th>
+
+</tr>
+
+</thead>
+
+<tbody id="departmentTable">
+
+<!-- JS -->
+
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+</div>
+
+<script src="../js/admin/departments.js"></script>
+
+</body>
+
+</html>

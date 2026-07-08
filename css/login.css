@@ -1,0 +1,80 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Poppins,sans-serif;
+}
+
+body{
+    background:#f5f7fb;
+}
+
+.left-panel{
+    background:linear-gradient(135deg,#0d6efd,#1d4ed8);
+    color:white;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.content{
+    width:80%;
+}
+
+.content h1{
+    font-size:55px;
+    font-weight:bold;
+    margin-bottom:20px;
+}
+
+.content p{
+    font-size:18px;
+    margin-bottom:30px;
+}
+
+.content ul{
+    list-style:none;
+    padding:0;
+}
+
+.content li{
+    margin:15px 0;
+    font-size:18px;
+}
+
+.login-card{
+    width:420px;
+    padding:40px;
+    border-radius:20px;
+    background:white;
+}
+/* =====================================
+   Back To Home Button
+===================================== */
+
+.back-home{
+    position:fixed;
+    top:20px;
+    left:20px;
+    z-index:1000;
+}
+
+.back-home a{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    padding:10px 18px;
+    background:#ffffff;
+    color:#1565d8;
+    text-decoration:none;
+    border-radius:8px;
+    font-weight:600;
+    box-shadow:0 5px 15px rgba(0,0,0,0.15);
+    transition:0.3s;
+}
+
+.back-home a:hover{
+    background:#1565d8;
+    color:#ffffff;
+    transform:translateY(-2px);
+}

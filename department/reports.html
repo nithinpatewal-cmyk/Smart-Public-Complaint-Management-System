@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Department Reports | CivicConnect</title>
+
+<link rel="stylesheet"
+href="../css/department/reports.css">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<!-- Sidebar -->
+
+<div class="sidebar">
+
+<h2 class="logo">
+
+<i class="fa-solid fa-city"></i>
+
+CivicConnect
+
+</h2>
+
+<a href="dashboard.html">
+
+<i class="fa-solid fa-house"></i>
+
+Dashboard
+
+</a>
+
+<a href="assigned-complaints.html">
+
+<i class="fa-solid fa-list-check"></i>
+
+Assigned Complaints
+
+</a>
+
+<a href="update-status.html">
+
+<i class="fa-solid fa-rotate"></i>
+
+Update Status
+
+</a>
+
+<a href="upload-resolution.html">
+
+<i class="fa-solid fa-camera"></i>
+
+Upload Resolution
+
+</a>
+
+<a href="reports.html" class="active">
+
+<i class="fa-solid fa-chart-column"></i>
+
+Reports
+
+</a>
+
+<a href="profile.html">
+
+<i class="fa-solid fa-user"></i>
+
+Profile
+
+</a>
+
+<a href="../login.html">
+
+<i class="fa-solid fa-right-from-bracket"></i>
+
+Logout
+
+</a>
+
+</div>
+
+<!-- Main -->
+
+<div class="main">
+
+<h1>Department Reports</h1>
+
+<div class="cards">
+
+<div class="card">
+
+<h2 id="totalComplaints">0</h2>
+
+<p>Total Assigned</p>
+
+</div>
+
+<div class="card">
+
+<h2 id="pendingComplaints">0</h2>
+
+<p>Pending</p>
+
+</div>
+
+<div class="card">
+
+<h2 id="progressComplaints">0</h2>
+
+<p>In Progress</p>
+
+</div>
+
+<div class="card">
+
+<h2 id="resolvedComplaints">0</h2>
+
+<p>Resolved</p>
+
+</div>
+
+</div>
+
+<div class="chart-container">
+
+<div class="chart-card">
+
+<h3>Status Report</h3>
+
+<canvas id="statusChart"></canvas>
+
+</div>
+
+<div class="chart-card">
+
+<h3>Monthly Report</h3>
+
+<canvas id="monthlyChart"></canvas>
+
+</div>
+
+</div>
+
+<div class="export">
+
+<button id="downloadReport">
+
+<i class="fa-solid fa-download"></i>
+
+Download Report
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<script src="../js/department/reports.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Assigned Complaints | CivicConnect</title>
+
+<link rel="stylesheet" href="../css/department/assigned-complaints.css">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="container">
+
+<!-- Sidebar -->
+
+<div class="sidebar">
+
+<h2 class="logo">
+
+<i class="fa-solid fa-city"></i>
+
+CivicConnect
+
+</h2>
+
+<a href="dashboard.html">
+
+<i class="fa-solid fa-house"></i>
+
+Dashboard
+
+</a>
+
+<a href="assigned-complaints.html" class="active">
+
+<i class="fa-solid fa-list-check"></i>
+
+Assigned Complaints
+
+</a>
+
+<a href="update-status.html">
+
+<i class="fa-solid fa-arrows-rotate"></i>
+
+Update Status
+
+</a>
+
+<a href="upload-resolution.html">
+
+<i class="fa-solid fa-camera"></i>
+
+Upload Resolution
+
+</a>
+
+<a href="reports.html">
+
+<i class="fa-solid fa-chart-column"></i>
+
+Reports
+
+</a>
+
+<a href="profile.html">
+
+<i class="fa-solid fa-user"></i>
+
+Profile
+
+</a>
+
+<a href="../login.html">
+
+<i class="fa-solid fa-right-from-bracket"></i>
+
+Logout
+
+</a>
+
+</div>
+
+<!-- Main -->
+
+<div class="main">
+
+<div class="header">
+
+<div>
+
+<h1>Assigned Complaints</h1>
+
+<p>Road Department</p>
+
+</div>
+
+<div>
+
+<i class="fa-solid fa-bell fa-xl"></i>
+
+</div>
+
+</div>
+
+<!-- Cards -->
+
+<div class="cards">
+
+<div class="card">
+
+<h2 id="totalAssigned">0</h2>
+
+<p>Total Assigned</p>
+
+</div>
+
+<div class="card">
+
+<h2 id="pendingCount">0</h2>
+
+<p>Pending</p>
+
+</div>
+
+<div class="card">
+
+<h2 id="progressCount">0</h2>
+
+<p>In Progress</p>
+
+</div>
+
+<div class="card">
+
+<h2 id="resolvedCount">0</h2>
+
+<p>Resolved</p>
+
+</div>
+
+</div>
+
+<!-- Search -->
+
+<div class="search-box">
+
+<input
+
+type="text"
+
+id="searchComplaint"
+
+placeholder="Search Complaint">
+
+</div>
+
+<!-- Complaint Table -->
+
+<div class="table-box">
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>ID</th>
+
+<th>Category</th>
+
+<th>Status</th>
+
+<th>Date</th>
+
+<th>Action</th>
+
+</tr>
+
+</thead>
+
+<tbody id="complaintTable">
+
+<!-- JavaScript -->
+
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+</div>
+
+<script src="../js/department/assigned-complaints.js"></script>
+
+</body>
+
+</html>

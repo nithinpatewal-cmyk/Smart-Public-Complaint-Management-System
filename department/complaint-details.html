@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Complaint Details | CivicConnect</title>
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+rel="stylesheet">
+
+<link rel="stylesheet"
+href="../css/department/complaint-details.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>
+
+<i class="fa-solid fa-circle-exclamation"></i>
+
+Complaint Details
+
+</h1>
+
+<div class="card">
+
+<div class="image-section">
+
+<img id="image">
+
+</div>
+
+<div class="details">
+
+<p><strong>Complaint ID :</strong> <span id="complaintId"></span></p>
+
+<p><strong>Citizen :</strong> <span id="citizen"></span></p>
+
+<p><strong>Category :</strong> <span id="category"></span></p>
+
+<p><strong>Title :</strong> <span id="title"></span></p>
+
+<p><strong>Description :</strong> <span id="description"></span></p>
+
+<p><strong>Address :</strong> <span id="address"></span></p>
+
+<p><strong>Status :</strong>
+
+<span id="status" class="status">
+
+Pending
+
+</span>
+
+</p>
+
+<p><strong>Date :</strong>
+
+<span id="date"></span>
+
+</p>
+
+</div>
+
+</div>
+
+<div class="buttons">
+
+<button
+id="acceptBtn"
+class="accept">
+
+Accept
+
+</button>
+
+<button
+id="progressBtn"
+class="progress">
+
+In Progress
+
+</button>
+
+<button
+id="resolveBtn"
+class="resolve">
+
+Resolved
+
+</button>
+
+<button
+id="rejectBtn"
+class="reject">
+
+Reject
+
+</button>
+
+</div>
+
+<div class="back">
+
+<a href="dashboard.html">
+
+<i class="fa-solid fa-arrow-left"></i>
+
+Back to Dashboard
+
+</a>
+
+</div>
+
+</div>
+
+<script src="../js/department/complaint-details.js"></script>
+
+</body>
+
+</html>

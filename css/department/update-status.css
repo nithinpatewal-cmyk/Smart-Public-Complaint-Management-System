@@ -1,0 +1,165 @@
+/* =====================================
+   CivicConnect Department Update Status
+===================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:#eef3fb;
+}
+
+.container{
+    display:flex;
+    min-height:100vh;
+}
+
+/* Sidebar */
+
+.sidebar{
+    width:240px;
+    background:#1565d8;
+    color:#fff;
+    padding:25px 15px;
+    position:fixed;
+    top:0;
+    left:0;
+    bottom:0;
+}
+
+.logo{
+    text-align:center;
+    margin-bottom:35px;
+    font-size:28px;
+}
+
+.logo i{
+    display:block;
+    margin-bottom:10px;
+}
+
+.sidebar a{
+    display:block;
+    color:#fff;
+    text-decoration:none;
+    padding:14px 18px;
+    margin-bottom:10px;
+    border-radius:10px;
+    transition:.3s;
+}
+
+.sidebar a i{
+    margin-right:10px;
+}
+
+.sidebar a:hover,
+.sidebar a.active{
+    background:#fff;
+    color:#1565d8;
+}
+
+/* Main */
+
+.main{
+    margin-left:260px;
+    width:calc(100% - 260px);
+    padding:35px;
+}
+
+.main h1{
+    color:#1565d8;
+    margin-bottom:25px;
+}
+
+/* Card */
+
+.status-card{
+
+    background:#fff;
+    padding:30px;
+    border-radius:15px;
+    box-shadow:0 5px 15px rgba(0,0,0,.12);
+
+}
+
+.status-card h3{
+
+    color:#1565d8;
+    margin-bottom:20px;
+
+}
+
+.status-card p{
+
+    margin-bottom:15px;
+    font-size:16px;
+
+}
+
+.status-card label{
+
+    display:block;
+    margin-top:20px;
+    margin-bottom:8px;
+    font-weight:600;
+
+}
+
+.status-card select{
+
+    width:100%;
+    padding:12px;
+    border:1px solid #ccc;
+    border-radius:8px;
+    outline:none;
+
+}
+
+.status-card textarea{
+
+    width:100%;
+    padding:12px;
+    border:1px solid #ccc;
+    border-radius:8px;
+    resize:none;
+    outline:none;
+
+}
+
+.status-card button{
+
+    margin-top:25px;
+    background:#198754;
+    color:#fff;
+    border:none;
+    padding:14px 25px;
+    border-radius:8px;
+    cursor:pointer;
+    transition:.3s;
+
+}
+
+.status-card button:hover{
+
+    background:#157347;
+
+}
+
+/* Responsive */
+
+@media(max-width:900px){
+
+.sidebar{
+display:none;
+}
+
+.main{
+margin-left:0;
+width:100%;
+}
+
+}

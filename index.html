@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>CivicConnect</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+rel="stylesheet">
+
+<link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+
+<!-- Navbar -->
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+
+<div class="container">
+
+<a class="navbar-brand fw-bold" href="#">
+<i class="fa-solid fa-city"></i>
+CivicConnect
+</a>
+
+<button class="navbar-toggler"
+data-bs-toggle="collapse"
+data-bs-target="#menu">
+
+<span class="navbar-toggler-icon"></span>
+
+</button>
+
+<div class="collapse navbar-collapse" id="menu">
+
+<ul class="navbar-nav ms-auto">
+
+<li class="nav-item">
+<a class="nav-link active" href="#">Home</a>
+</li>
+
+<li class="nav-item">
+<a class="nav-link" href="about.html">About</a>
+</li>
+
+<li class="nav-item">
+<a class="nav-link" href="services.html">Services</a>
+</li>
+
+<li class="nav-item">
+<a class="nav-link" href="login.html">Login</a>
+</li>
+
+<li class="nav-item">
+<a class="btn btn-warning ms-3"
+href="register.html">
+Register
+</a>
+</li>
+
+</ul>
+
+</div>
+
+</div>
+
+</nav>
+
+<!-- Hero -->
+
+<section class="hero">
+
+<div class="container">
+
+<div class="row align-items-center">
+
+<div class="col-lg-6">
+
+<h1>Report Civic Problems Instantly</h1>
+
+<p>
+
+Help build a cleaner and safer city by reporting potholes,
+garbage dumps, streetlight failures, water leaks and more.
+
+</p>
+
+<a href="login.html"
+class="btn btn-success btn-lg">
+
+Report Complaint
+
+</a>
+
+</div>
+
+<div class="col-lg-6 text-center">
+
+<img src="images/hero.png"
+class="img-fluid">
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- Categories -->
+
+<section class="container my-5">
+
+<h2 class="text-center mb-5">
+Complaint Categories
+</h2>
+
+<div class="row g-4">
+
+<!-- Road -->
+
+<div class="col-md-3">
+
+<div class="card text-center shadow category-card"
+onclick="openCategory('road')">
+
+<div class="card-body">
+
+<i class="fa-solid fa-road fa-3x text-primary"></i>
+
+<h5 class="mt-3">Road Damage</h5>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- Garbage -->
+
+<div class="col-md-3">
+
+<div class="card text-center shadow category-card"
+onclick="openCategory('garbage')">
+
+<div class="card-body">
+
+<i class="fa-solid fa-trash fa-3x text-success"></i>
+
+<h5 class="mt-3">Garbage</h5>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- Street Light -->
+
+<div class="col-md-3">
+
+<div class="card text-center shadow category-card"
+onclick="openCategory('streetlight')">
+
+<div class="card-body">
+
+<i class="fa-solid fa-lightbulb fa-3x text-warning"></i>
+
+<h5 class="mt-3">Street Lights</h5>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- Water -->
+
+<div class="col-md-3">
+
+<div class="card text-center shadow category-card"
+onclick="openCategory('water')">
+
+<div class="card-body">
+
+<i class="fa-solid fa-faucet-drip fa-3x text-info"></i>
+
+<h5 class="mt-3">Water Leakage</h5>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- BEFORE AFTER POPUP -->
+
+<div id="categoryModal" class="modal">
+
+<div class="modal-content">
+
+<span class="close"
+onclick="closeModal()">
+
+&times;
+
+</span>
+
+<h2 id="modalTitle"></h2>
+
+<div class="image-container">
+
+<div>
+
+<h4>Before Work</h4>
+
+<img id="beforeImage" src="">
+
+</div>
+
+<div>
+
+<h4>After Work</h4>
+
+<img id="afterImage" src="">
+
+</div>
+
+</div>
+
+<p id="modalDescription"></p>
+
+</div>
+
+</div>
+
+<footer class="bg-dark text-white text-center p-4">
+
+© 2026 CivicConnect
+
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script src="js/index.js"></script>
+
+</body>
+
+</html>

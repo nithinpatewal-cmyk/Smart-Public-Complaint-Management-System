@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Admin Settings | CivicConnect</title>
+
+<link rel="stylesheet" href="../css/admin/settings.css">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+<!-- Sidebar -->
+
+<div class="sidebar">
+
+<h2 class="logo">
+
+<i class="fa-solid fa-city"></i>
+
+CivicConnect
+
+</h2>
+
+<a href="dashboard.html">
+<i class="fa-solid fa-gauge"></i>
+Dashboard
+</a>
+
+<a href="complaints.html">
+<i class="fa-solid fa-list-check"></i>
+Complaints
+</a>
+
+<a href="citizens.html">
+<i class="fa-solid fa-users"></i>
+Citizens
+</a>
+
+<a href="departments.html">
+<i class="fa-solid fa-building"></i>
+Departments
+</a>
+
+<a href="reports.html">
+<i class="fa-solid fa-chart-column"></i>
+Reports
+</a>
+
+<a href="settings.html" class="active">
+<i class="fa-solid fa-gear"></i>
+Settings
+</a>
+
+<a href="../login.html">
+<i class="fa-solid fa-right-from-bracket"></i>
+Logout
+</a>
+
+</div>
+
+<!-- Main -->
+
+<div class="main">
+
+<h1>Admin Settings</h1>
+
+<div class="settings-card">
+
+<h2>Profile Information</h2>
+
+<label>Administrator Name</label>
+
+<input
+type="text"
+value="Administrator">
+
+<label>Email</label>
+
+<input
+type="email"
+value="admin@civicconnect.com">
+
+<label>Phone</label>
+
+<input
+type="text"
+value="+91 9876543210">
+
+<button id="saveProfile">
+
+Save Profile
+
+</button>
+
+</div>
+
+<div class="settings-card">
+
+<h2>Change Password</h2>
+
+<input
+type="password"
+placeholder="Current Password">
+
+<input
+type="password"
+placeholder="New Password">
+
+<input
+type="password"
+placeholder="Confirm Password">
+
+<button id="changePassword">
+
+Change Password
+
+</button>
+
+</div>
+
+<div class="settings-card">
+
+<h2>System Preferences</h2>
+
+<label>
+
+<input type="checkbox" checked>
+
+Email Notifications
+
+</label>
+
+<br><br>
+
+<label>
+
+<input type="checkbox" checked>
+
+SMS Notifications
+
+</label>
+
+<br><br>
+
+<label>
+
+<input type="checkbox">
+
+Dark Mode
+
+</label>
+
+<br><br>
+
+<button id="saveSettings">
+
+Save Settings
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<script src="../js/admin/settings.js"></script>
+
+</body>
+
+</html>
