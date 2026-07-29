@@ -1,121 +1,36 @@
-// ==========================================
-// CivicConnect Citizen Settings
-// ==========================================
+document.getElementById("passwordForm").addEventListener("submit", async function (e) {
+    e.preventDefault();
 
-// Elements
+    const old_password = document.getElementById("oldPassword").value;
+    const new_password = document.getElementById("newPassword").value;
+    const confirm_password = document.getElementById("confirmNewPassword").value;
 
-const notifications = document.getElementById("notifications");
-const locationPermission = document.getElementById("location");
-const darkMode = document.getElementById("darkMode");
-const language = document.getElementById("language");
+    if (new_password.length < 6) {
+        showToast("Validation Error", "New password must be at least 6 characters.", "error");
+        return;
+    }
 
-// ==========================================
-// Load Settings
-// ==========================================
+    if (new_password !== confirm_password) {
+        showToast("Validation Error", "New passwords do not match.", "error");
+        return;
+    }
 
-window.onload = function(){
+    try {
+        const response = await fetch("http://127.0.0.1:8000/api/profile/change-password/", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ old_password, new_password })
+        });
 
-    const settings = JSON.parse(localStorage.getItem("citizenSettings"));
+        const data = await response.json();
 
-    if(settings){
-
-        notifications.checked = settings.notifications;
-
-        locationPermission.checked = settings.location;
-
-        darkMode.checked = settings.darkMode;
-
-        language.value = settings.language;
-
-        if(settings.darkMode){
-
-            document.body.classList.add("dark-mode");
-
+        if (response.ok) {
+            showToast("Success", "Password updated successfully!", "success");
+            document.getElementById("passwordForm").reset();
+        } else {
+            showToast("Error", data.error || "Password update failed.", "error");
         }
-
+    } catch (err) {
+        showToast("Error", "Network connection error.", "error");
     }
-
-};
-
-// ==========================================
-// Save Settings
-// ==========================================
-
-document.getElementById("saveSettings")
-
-.addEventListener("click",function(){
-
-    const settings={
-
-        notifications:notifications.checked,
-
-        location:locationPermission.checked,
-
-        darkMode:darkMode.checked,
-
-        language:language.value
-
-    };
-
-    localStorage.setItem(
-
-        "citizenSettings",
-
-        JSON.stringify(settings)
-
-    );
-
-    if(darkMode.checked){
-
-        document.body.classList.add("dark-mode");
-
-    }
-
-    else{
-
-        document.body.classList.remove("dark-mode");
-
-    }
-
-    alert("Settings Saved Successfully!");
-
 });
-
-// ==========================================
-// Dark Mode Toggle
-// ==========================================
-
-darkMode.addEventListener("change",function(){
-
-    if(this.checked){
-
-        document.body.classList.add("dark-mode");
-
-    }
-
-    else{
-
-        document.body.classList.remove("dark-mode");
-
-    }
-
-});
-
-// ==========================================
-// Page Animation
-// ==========================================
-
-const card = document.querySelector(".settings-card");
-
-card.style.opacity="0";
-card.style.transform="translateY(30px)";
-
-setTimeout(()=>{
-
-    card.style.transition=".5s";
-
-    card.style.opacity="1";
-
-    card.style.transform="translateY(0)";
-
-},300);

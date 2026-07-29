@@ -1,121 +1,43 @@
-// ==========================================
-// CivicConnect Citizen Profile
-// ==========================================
+async function loadProfile() {
+    try {
+        const response = await fetch("http://127.0.0.1:8000/api/profile/");
+        if (!response.ok) throw new Error("Failed to load profile");
 
-// Elements
+        const data = await response.json();
 
-const nameInput = document.getElementById("name");
-const emailInput = document.getElementById("email");
-const phoneInput = document.getElementById("phone");
-const addressInput = document.getElementById("address");
-const passwordInput = document.getElementById("password");
-const confirmPasswordInput = document.getElementById("confirmPassword");
-
-// ==========================================
-// Load Profile
-// ==========================================
-
-window.onload = function(){
-
-    const profile = JSON.parse(localStorage.getItem("citizenProfile"));
-
-    if(profile){
-
-        nameInput.value = profile.name || "";
-        emailInput.value = profile.email || "";
-        phoneInput.value = profile.phone || "";
-        addressInput.value = profile.address || "";
-
+        document.getElementById("username").value = data.username || "";
+        document.getElementById("email").value = data.email || "";
+        document.getElementById("phone").value = data.phone || "";
+        document.getElementById("role").value = data.role || "";
+        document.getElementById("address").value = data.address || "";
+    } catch (err) {
+        console.error("Profile load error:", err);
+        showToast("Error", "Could not load profile from backend.", "error");
     }
+}
 
-};
+document.getElementById("profileForm").addEventListener("submit", async function (e) {
+    e.preventDefault();
 
-// ==========================================
-// Save Profile
-// ==========================================
+    const email = document.getElementById("email").value.trim();
+    const phone = document.getElementById("phone").value.trim();
+    const address = document.getElementById("address").value.trim();
 
-document.getElementById("saveProfile")
+    try {
+        const response = await fetch("http://127.0.0.1:8000/api/profile/", {
+            method: "PUT",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ email, phone, address })
+        });
 
-.addEventListener("click",function(){
-
-    // Validation
-
-    if(nameInput.value.trim()===""){
-
-        alert("Please enter your name.");
-
-        return;
-
+        if (response.ok) {
+            showToast("Profile Updated", "Your contact profile has been saved.", "success");
+        } else {
+            showToast("Update Failed", "Could not update profile.", "error");
+        }
+    } catch (err) {
+        showToast("Error", "Network connection error.", "error");
     }
-
-    if(emailInput.value.trim()===""){
-
-        alert("Please enter your email.");
-
-        return;
-
-    }
-
-    if(phoneInput.value.trim()===""){
-
-        alert("Please enter your mobile number.");
-
-        return;
-
-    }
-
-    if(passwordInput.value !== confirmPasswordInput.value){
-
-        alert("Passwords do not match.");
-
-        return;
-
-    }
-
-    const profile = {
-
-        name : nameInput.value,
-
-        email : emailInput.value,
-
-        phone : phoneInput.value,
-
-        address : addressInput.value,
-
-        password : passwordInput.value
-
-    };
-
-    localStorage.setItem(
-
-        "citizenProfile",
-
-        JSON.stringify(profile)
-
-    );
-
-    passwordInput.value="";
-    confirmPasswordInput.value="";
-
-    alert("Profile Updated Successfully!");
-
 });
 
-// ==========================================
-// Animation
-// ==========================================
-
-const card = document.querySelector(".profile-card");
-
-card.style.opacity="0";
-card.style.transform="translateY(30px)";
-
-setTimeout(()=>{
-
-card.style.transition=".5s";
-
-card.style.opacity="1";
-
-card.style.transform="translateY(0)";
-
-},300);
+document.addEventListener("DOMContentLoaded", loadProfile);

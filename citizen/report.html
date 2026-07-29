@@ -1,258 +1,141 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Report Complaint | CivicConnect</title>
-
-<link rel="stylesheet" href="../css/citizen/report.css">
-
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-
-<link rel="stylesheet"
-href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-rel="stylesheet">
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report Complaint | CivicConnect</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+    <link rel="stylesheet" href="../css/style.css">
 </head>
-
-<body>
-
-<div class="container">
-
-<!-- Sidebar -->
-
-<div class="sidebar">
-
-<h2 class="logo">
-
-<i class="fa-solid fa-city"></i>
-
-CivicConnect
-
-</h2>
-
-<a href="dashboard.html">
-
-<i class="fa-solid fa-house"></i>
-
-Dashboard
-
-</a>
-
-<a href="report.html" class="active">
-
-<i class="fa-solid fa-circle-exclamation"></i>
-
-Report Complaint
-
-</a>
-
-<a href="my-complaints.html">
-
-<i class="fa-solid fa-folder-open"></i>
-
-My Complaints
-
-</a>
-
-<a href="notifications.html">
-
-<i class="fa-solid fa-bell"></i>
-
-Notifications
-
-</a>
-
-<a href="profile.html">
-
-<i class="fa-solid fa-user"></i>
-
-Profile
-
-</a>
-
-<a href="settings.html">
-
-<i class="fa-solid fa-gear"></i>
-
-Settings
-
-</a>
-
-<a href="../login.html">
-
-<i class="fa-solid fa-right-from-bracket"></i>
-
-Logout
-
-</a>
-
-</div>
-
-<!-- Main -->
-
-<div class="main">
-
-<h1>
-
-<i class="fa-solid fa-camera"></i>
-
-Report New Complaint
-
-</h1>
-
-<form id="complaintForm">
-
-<div class="form-grid">
-
-<div>
-
-<label>Complaint ID</label>
-
-<input type="text" id="complaintId" readonly>
-
-</div>
-
-<div>
-
-<label>Date</label>
-
-<input type="text" id="date" readonly>
-
-</div>
-
-<div>
-
-<label>Time</label>
-
-<input type="text" id="time" readonly>
-
-</div>
-
-<div>
-
-<label>Category</label>
-
-<select id="category" required>
-
-<option value="">Select Category</option>
-
-<option>Road Damage</option>
-
-<option>Garbage</option>
-
-<option>Street Light</option>
-
-<option>Water Leakage</option>
-
-</select>
-
-</div>
-
-<div>
-
-<label>Priority</label>
-
-<select id="priority">
-
-<option>Low</option>
-
-<option>Medium</option>
-
-<option>High</option>
-
-</select>
-
-</div>
-
-<div>
-
-<label>Complaint Title</label>
-
-<input
-type="text"
-id="title"
-placeholder="Enter Complaint Title"
-required>
-
-</div>
-
-</div>
-
-<label>Description</label>
-
-<textarea
-id="description"
-rows="5"
-placeholder="Describe the problem..."
-required></textarea>
-
-<label>Upload Photo</label>
-
-<input
-type="file"
-id="photo"
-accept="image/*"
-required>
-
-<img id="preview">
-
-<h3>Current Location</h3>
-
-<div class="location-box">
-
-<p>
-
-Latitude :
-
-<span id="latitude">Fetching...</span>
-
-</p>
-
-<p>
-
-Longitude :
-
-<span id="longitude">Fetching...</span>
-
-</p>
-
-<p>
-
-Address :
-
-<span id="address">Fetching...</span>
-
-</p>
-
-</div>
-
-<div id="map"></div>
-
-<button type="submit">
-
-<i class="fa-solid fa-paper-plane"></i>
-
-Submit Complaint
-
-</button>
-
-</form>
-
-</div>
-
-</div>
-
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-
-<script src="../js/citizen/report.js"></script>
-
+<body class="bg-light">
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="dashboard.html">
+                <i class="fa-solid fa-city"></i> CivicConnect <span class="badge bg-primary text-uppercase fs-6 ms-2">Citizen</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#citizenNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="citizenNav">
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <li class="nav-item"><a class="nav-link" href="dashboard.html"><i class="fa-solid fa-gauge me-1"></i> Dashboard</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="report.html"><i class="fa-solid fa-circle-exclamation me-1"></i> Report Issue</a></li>
+                    <li class="nav-item"><a class="nav-link" href="my-complaints.html"><i class="fa-solid fa-folder-open me-1"></i> My Complaints</a></li>
+                    <li class="nav-item"><a class="nav-link" href="notifications.html"><i class="fa-solid fa-bell me-1"></i> Notifications <span id="notificationBadge" class="badge bg-danger rounded-pill"></span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="profile.html"><i class="fa-solid fa-user me-1"></i> Profile</a></li>
+                    <li class="nav-item"><a class="btn btn-outline-danger btn-sm ms-lg-3 btn-logout" href="../login.html"><i class="fa-solid fa-right-from-bracket me-1"></i> Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container py-4">
+        <div class="card shadow-lg border-0 p-4" style="border-radius: 16px;">
+            <div class="d-flex align-items-center justify-content-between pb-3 mb-4 border-bottom">
+                <div>
+                    <h2 class="fw-bold text-dark mb-0"><i class="fa-solid fa-camera text-primary me-2"></i> Report Civic Complaint</h2>
+                    <p class="text-muted small mb-0">Upload geotagged photo captured via GPS Map Camera application</p>
+                </div>
+                <span class="badge bg-info-subtle text-info fs-6 px-3 py-2 border"><i class="fa-solid fa-shield-halved me-1"></i> EXIF Verified</span>
+            </div>
+
+            <div id="exifAlert" class="alert alert-info d-flex align-items-center gap-2 mb-4">
+                <i class="fa-solid fa-circle-info fa-lg"></i>
+                <div>
+                    <strong>GPS Metadata Requirement:</strong> Uploading a photo taken with a GPS Map Camera will automatically extract exact coordinates and lock location inputs. If no GPS metadata exists, you may pin the location manually on the Leaflet map.
+                </div>
+            </div>
+
+            <form id="complaintForm" enctype="multipart/form-data">
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <label class="form-label">Complaint Title <span class="text-danger">*</span></label>
+                        <input type="text" id="title" class="form-control" placeholder="e.g. Deep Pothole near Central Avenue" required>
+                    </div>
+
+                    <div class="col-md-3">
+                        <label class="form-label">Category <span class="text-danger">*</span></label>
+                        <select id="category" class="form-select" required>
+                            <option value="">Select Category</option>
+                            <option value="Road Damage">Road Damage (Road Dept)</option>
+                            <option value="Garbage">Garbage (Sanitation Dept)</option>
+                            <option value="Street Light">Street Light (Electrical Dept)</option>
+                            <option value="Water Leakage">Water Leakage (Water Dept)</option>
+                        </select>
+                    </div>
+
+                    <div class="col-md-3">
+                        <label class="form-label">Priority Level <span class="text-danger">*</span></label>
+                        <select id="priority" class="form-select">
+                            <option value="Low">Low</option>
+                            <option value="Medium" selected>Medium</option>
+                            <option value="High">High</option>
+                            <option value="Urgent">Urgent</option>
+                        </select>
+                    </div>
+
+                    <div class="col-12">
+                        <label class="form-label">Detailed Description <span class="text-danger">*</span></label>
+                        <textarea id="description" class="form-control" rows="3" placeholder="Provide details regarding the civic issue, landmarks, and severity..." required></textarea>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label class="form-label">Upload Complaint Photo (GPS Camera Image) <span class="text-danger">*</span></label>
+                        <input type="file" id="photo" class="form-control" accept="image/*" required>
+                        <div class="form-text">Supported formats: JPG, JPEG, PNG. Max size: 10MB.</div>
+
+                        <div id="imagePreviewBox" class="mt-3 text-center d-none">
+                            <img id="preview" src="" class="img-fluid rounded border shadow-sm" style="max-height: 250px; object-fit: cover;">
+                            <div id="exifBadge" class="mt-2 text-start"></div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="card p-3 bg-light border">
+                            <h5 class="fw-bold text-dark mb-3"><i class="fa-solid fa-location-dot text-danger me-2"></i> Location Coordinates</h5>
+                            
+                            <div class="row g-2 mb-2">
+                                <div class="col-6">
+                                    <label class="small text-muted font-monospace">LATITUDE</label>
+                                    <input type="text" id="latInput" class="form-control form-control-sm font-monospace" placeholder="Latitude" readonly required>
+                                </div>
+                                <div class="col-6">
+                                    <label class="small text-muted font-monospace">LONGITUDE</label>
+                                    <input type="text" id="lngInput" class="form-control form-control-sm font-monospace" placeholder="Longitude" readonly required>
+                                </div>
+                            </div>
+
+                            <div class="mb-2">
+                                <label class="small text-muted font-monospace">REVERSE GEOCODED ADDRESS</label>
+                                <textarea id="addressInput" class="form-control form-control-sm" rows="2" placeholder="Address will auto-populate..." required></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12">
+                        <label class="form-label fw-bold"><i class="fa-solid fa-map-location-dot text-primary me-2"></i> Leaflet + OpenStreetMap Location Marker</label>
+                        <div id="map" class="leaflet-map-container"></div>
+                    </div>
+
+                    <div class="col-12 text-end mt-4">
+                        <button type="submit" id="submitBtn" class="btn btn-primary btn-lg px-4 fw-bold shadow-sm">
+                            <i class="fa-solid fa-paper-plane me-2"></i> Submit Complaint
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/exifr/dist/full.umd.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
+    <script src="../js/auth.js"></script>
+    <script src="../js/citizen/report.js"></script>
 </body>
-
 </html>

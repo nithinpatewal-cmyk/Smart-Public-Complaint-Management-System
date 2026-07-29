@@ -1,160 +1,145 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Departments | CivicConnect Admin</title>
-
-<link rel="stylesheet" href="../css/admin/departments.css">
-
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Departments | CivicConnect Admin</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="../css/admin/departments.css">
 </head>
-
 <body>
 
-<div class="container">
+<div class="container-fluid p-0">
+    <div class="d-flex">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <h2 class="logo">
+                <i class="fa-solid fa-city"></i>
+                CivicConnect
+            </h2>
+            <a href="dashboard.html"><i class="fa-solid fa-gauge"></i> Dashboard</a>
+            <a href="complaints.html"><i class="fa-solid fa-list-check"></i> Complaints</a>
+            <a href="citizens.html"><i class="fa-solid fa-users"></i> Citizens</a>
+            <a href="departments.html" class="active"><i class="fa-solid fa-building"></i> Departments</a>
+            <a href="reports.html"><i class="fa-solid fa-chart-column"></i> Reports</a>
+            <a href="settings.html"><i class="fa-solid fa-gear"></i> Settings</a>
+            <a href="../login.html" class="btn-logout"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+        </div>
 
-<!-- Sidebar -->
+        <!-- Main Content -->
+        <div class="main">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <div>
+                    <h1 class="h2 fw-bold text-primary mb-0">Department Management</h1>
+                    <p class="text-muted small">Manage municipal departments and provision department officer accounts</p>
+                </div>
+                <button type="button" class="btn btn-primary fw-bold px-3 py-2 shadow-sm" data-bs-toggle="modal" data-bs-target="#createDeptUserModal">
+                    <i class="fa-solid fa-user-plus me-1"></i> Provision Department Officer
+                </button>
+            </div>
 
-<div class="sidebar">
+            <!-- Cards -->
+            <div class="cards mb-4">
+                <div class="card bg-primary text-white">
+                    <h2 id="totalDepartments">4</h2>
+                    <p class="mb-0">Total Departments</p>
+                </div>
+                <div class="card bg-success text-white">
+                    <h2 id="activeDepartments">4</h2>
+                    <p class="mb-0">Active Officers</p>
+                </div>
+                <div class="card bg-info text-white">
+                    <h2 id="assignedComplaints">0</h2>
+                    <p class="mb-0">Assigned Complaints</p>
+                </div>
+            </div>
 
-<h2 class="logo">
+            <!-- Search -->
+            <div class="search-box mb-3">
+                <input type="text" id="searchDepartment" class="form-control" placeholder="Search Department or Officer...">
+            </div>
 
-<i class="fa-solid fa-city"></i>
-
-CivicConnect
-
-</h2>
-
-<a href="dashboard.html">
-<i class="fa-solid fa-gauge"></i>
-Dashboard
-</a>
-
-<a href="complaints.html">
-<i class="fa-solid fa-list-check"></i>
-Complaints
-</a>
-
-<a href="citizens.html">
-<i class="fa-solid fa-users"></i>
-Citizens
-</a>
-
-<a href="departments.html" class="active">
-<i class="fa-solid fa-building"></i>
-Departments
-</a>
-
-<a href="reports.html">
-<i class="fa-solid fa-chart-column"></i>
-Reports
-</a>
-
-<a href="settings.html">
-<i class="fa-solid fa-gear"></i>
-Settings
-</a>
-
-<a href="../login.html">
-<i class="fa-solid fa-right-from-bracket"></i>
-Logout
-</a>
-
+            <!-- Table -->
+            <div class="table-box">
+                <table class="table align-middle mb-0">
+                    <thead>
+                        <tr>
+                            <th>Department Name</th>
+                            <th>Officer Username</th>
+                            <th>Officer Email</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="departmentTable">
+                        <!-- JS populated -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 </div>
 
-<!-- Main -->
+<!-- Modal: Create Department Officer -->
+<div class="modal fade" id="createDeptUserModal" tabindex="-1" aria-labelledby="createDeptUserModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border-0 shadow-lg" style="border-radius: 14px;">
+            <div class="modal-header bg-primary text-white" style="border-top-left-radius: 14px; border-top-right-radius: 14px;">
+                <h5 class="modal-title fw-bold" id="createDeptUserModalLabel">
+                    <i class="fa-solid fa-building-user me-2"></i>Provision Department Officer Account
+                </h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body p-4">
+                <div id="modalAlert" class="alert alert-danger d-none mb-3"></div>
+                <form id="createDeptUserForm">
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">Department <span class="text-danger">*</span></label>
+                        <select id="deptSelect" class="form-select" required>
+                            <option value="Road Department">Road Department</option>
+                            <option value="Sanitation Department">Sanitation Department</option>
+                            <option value="Electrical Department">Electrical Department</option>
+                            <option value="Water Department">Water Department</option>
+                        </select>
+                    </div>
 
-<div class="main">
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">Officer Username <span class="text-danger">*</span></label>
+                        <input type="text" id="deptUsername" class="form-control" placeholder="e.g. road_officer_1" required>
+                        <div class="form-text small">Only letters, numbers, dots, and underscores</div>
+                    </div>
 
-<h1>Departments</h1>
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">Officer Email <span class="text-danger">*</span></label>
+                        <input type="email" id="deptEmail" class="form-control" placeholder="officer@civicconnect.gov" required>
+                    </div>
 
-<!-- Cards -->
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">Temporary Password <span class="text-danger">*</span></label>
+                        <input type="password" id="deptPassword" class="form-control" placeholder="Minimum 6 characters" required>
+                    </div>
 
-<div class="cards">
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">Phone Number</label>
+                        <input type="tel" id="deptPhone" class="form-control" placeholder="10-digit mobile number" maxlength="10">
+                    </div>
 
-<div class="card">
-
-<h2 id="totalDepartments">4</h2>
-
-<p>Total Departments</p>
-
+                    <div class="d-flex justify-content-end gap-2 mt-4">
+                        <button type="button" class="btn btn-secondary fw-semibold" data-bs-dismiss="modal">Cancel</button>
+                        <button type="submit" id="saveDeptUserBtn" class="btn btn-primary fw-bold">
+                            <span id="modalSpinner" class="spinner-border spinner-border-sm d-none me-1"></span>
+                            <i class="fa-solid fa-check me-1"></i> Create Department Account
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
 
-<div class="card">
-
-<h2 id="activeDepartments">4</h2>
-
-<p>Active Departments</p>
-
-</div>
-
-<div class="card">
-
-<h2 id="assignedComplaints">0</h2>
-
-<p>Assigned Complaints</p>
-
-</div>
-
-</div>
-
-<!-- Search -->
-
-<div class="search-box">
-
-<input
-type="text"
-id="searchDepartment"
-placeholder="Search Department">
-
-</div>
-
-<!-- Table -->
-
-<div class="table-box">
-
-<table>
-
-<thead>
-
-<tr>
-
-<th>Department</th>
-
-<th>Head</th>
-
-<th>Complaints</th>
-
-<th>Status</th>
-
-<th>Action</th>
-
-</tr>
-
-</thead>
-
-<tbody id="departmentTable">
-
-<!-- JS -->
-
-</tbody>
-
-</table>
-
-</div>
-
-</div>
-
-</div>
-
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../js/auth.js"></script>
 <script src="../js/admin/departments.js"></script>
-
 </body>
-
 </html>

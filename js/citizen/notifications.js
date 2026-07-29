@@ -1,144 +1,70 @@
-// ==========================================
-// CivicConnect Notifications
-// ==========================================
+async function fetchNotifications() {
+    const container = document.getElementById("notificationContainer");
+    try {
+        const response = await fetch("http://127.0.0.1:8000/api/notifications/");
+        if (!response.ok) throw new Error("Failed to fetch");
 
-// Get Complaints
-let complaints = JSON.parse(localStorage.getItem("complaints")) || [];
+        const data = await response.json();
+        const notifications = data.notifications || [];
 
-const container = document.getElementById("notificationContainer");
+        container.innerHTML = "";
 
-// ==========================================
-// Load Notifications
-// ==========================================
-
-function loadNotifications(){
-
-    container.innerHTML = "";
-
-    if(complaints.length === 0){
-
-        container.innerHTML = `
-
-        <div class="empty">
-
-            <i class="fa-solid fa-bell-slash"></i>
-
-            <h2>No Notifications</h2>
-
-            <p>You don't have any notifications yet.</p>
-
-        </div>
-
-        `;
-
-        return;
-
-    }
-
-    complaints.slice().reverse().forEach(c=>{
-
-        let icon = "fa-circle-info";
-        let title = "";
-        let message = "";
-
-        switch(c.status){
-
-            case "Pending":
-
-                icon = "fa-clock";
-
-                title = "Complaint Submitted";
-
-                message = `Your complaint (${c.id}) has been submitted successfully and is waiting for admin approval.`;
-
-                break;
-
-            case "In Progress":
-
-                icon = "fa-person-digging";
-
-                title = "Work Started";
-
-                message = `Your complaint (${c.id}) is currently being handled by the department.`;
-
-                break;
-
-            case "Resolved":
-
-                icon = "fa-circle-check";
-
-                title = "Complaint Resolved";
-
-                message = `Great news! Your complaint (${c.id}) has been resolved successfully.`;
-
-                break;
-
-            case "Rejected":
-
-                icon = "fa-circle-xmark";
-
-                title = "Complaint Rejected";
-
-                message = `Your complaint (${c.id}) has been rejected by the administrator.`;
-
-                break;
-
+        if (notifications.length === 0) {
+            container.innerHTML = `
+                <div class="text-center py-5 text-muted">
+                    <i class="fa-solid fa-bell-slash fa-3x mb-3 text-secondary"></i>
+                    <h5>No Notifications Yet</h5>
+                    <p class="mb-0">You have no notification alerts at this time.</p>
+                </div>
+            `;
+            return;
         }
 
-        container.innerHTML += `
+        notifications.forEach(n => {
+            const isUnread = !n.is_read;
+            const borderType = {
+                "success": "border-start border-4 border-success",
+                "warning": "border-start border-4 border-warning",
+                "error": "border-start border-4 border-danger",
+                "info": "border-start border-4 border-primary"
+            }[n.notification_type] || "border-start border-4 border-info";
 
-        <div class="notification">
-
-            <i class="fa-solid ${icon}"></i>
-
-            <div class="notification-content">
-
-                <h3>${title}</h3>
-
-                <p>${message}</p>
-
-                <span>
-
-                    ${c.date} &nbsp; ${c.time}
-
-                </span>
-
+            container.innerHTML += `
+                <div class="list-group-item list-group-item-action p-3 mb-2 rounded ${borderType} ${isUnread ? 'bg-white shadow-sm' : 'bg-light'}">
+                    <div class="d-flex justify-content-between align-items-center mb-1">
+                        <h6 class="fw-bold text-dark mb-0">${n.title} ${isUnread ? '<span class="badge bg-danger ms-2">New</span>' : ''}</h6>
+                        <small class="text-muted font-monospace">${new Date(n.created_at).toLocaleString()}</small>
+                    </div>
+                    <p class="mb-1 text-secondary small">${n.message}</p>
+                </div>
+            `;
+        });
+    } catch (err) {
+        console.error("Notifications error:", err);
+        container.innerHTML = `
+            <div class="alert alert-danger text-center py-4">
+                Unable to connect to notification server.
             </div>
-
-        </div>
-
         `;
-
-    });
-
+    }
 }
 
-loadNotifications();
-
-// ==========================================
-// Clear Notifications
-// ==========================================
-
-document.getElementById("clearNotifications")
-
-.addEventListener("click",function(){
-
-    if(confirm("Clear all notifications?")){
-
-        container.innerHTML = `
-
-        <div class="empty">
-
-            <i class="fa-solid fa-bell-slash"></i>
-
-            <h2>No Notifications</h2>
-
-            <p>Notifications cleared successfully.</p>
-
-        </div>
-
-        `;
-
+async function markAllNotificationsRead() {
+    try {
+        const response = await fetch("http://127.0.0.1:8000/api/notifications/read/", {
+            method: "POST"
+        });
+        if (response.ok) {
+            showToast("Notifications Read", "All notifications marked as read.", "success");
+            fetchNotifications();
+        }
+    } catch (err) {
+        showToast("Error", "Could not mark notifications read.", "error");
     }
+}
 
+document.addEventListener("DOMContentLoaded", () => {
+    fetchNotifications();
+    const btn = document.getElementById("markAllReadBtn");
+    if (btn) btn.addEventListener("click", markAllNotificationsRead);
 });

@@ -1,91 +1,71 @@
-// ==========================================
-// CivicConnect Citizen Dashboard
-// ==========================================
+async function loadCitizenDashboard() {
+    const username = localStorage.getItem("username") || "Citizen";
+    const nameEl = document.getElementById("citizenName");
+    if (nameEl) nameEl.innerText = username;
 
-// Get complaints from Local Storage
-let complaints = JSON.parse(localStorage.getItem("complaints")) || [];
+    try {
+        const response = await fetch("http://127.0.0.1:8000/api/complaints/");
+        if (!response.ok) throw new Error("Failed to load complaints");
 
-// Dashboard Cards
-const total = complaints.length;
+        const complaints = await response.json();
 
-const pending = complaints.filter(c => c.status === "Pending").length;
+        // Update counts
+        document.getElementById("totalComplaints").innerText = complaints.length;
+        document.getElementById("pendingComplaints").innerText = complaints.filter(c => c.status === "Pending").length;
+        document.getElementById("progressComplaints").innerText = complaints.filter(c => c.status === "Accepted" || c.status === "In Progress").length;
+        document.getElementById("resolvedComplaints").innerText = complaints.filter(c => c.status === "Resolved").length;
 
-const progress = complaints.filter(c => c.status === "In Progress").length;
+        // Render Recent Complaints Table
+        const tbody = document.getElementById("recentComplaints");
+        tbody.innerHTML = "";
 
-const resolved = complaints.filter(c => c.status === "Resolved").length;
+        if (complaints.length === 0) {
+            tbody.innerHTML = `
+                <tr>
+                    <td colspan="7" class="text-center py-4 text-muted">
+                        <i class="fa-solid fa-folder-open fa-2x mb-2 d-block text-secondary"></i>
+                        No complaints submitted yet. <a href="report.html" class="fw-bold">Report an issue now</a>.
+                    </td>
+                </tr>
+            `;
+            return;
+        }
 
-// Update Dashboard Cards
-document.getElementById("totalComplaints").innerText = total;
-document.getElementById("pendingComplaints").innerText = pending;
-document.getElementById("progressComplaints").innerText = progress;
-document.getElementById("resolvedComplaints").innerText = resolved;
+        complaints.slice(0, 5).forEach(c => {
+            const badgeClass = {
+                "Pending": "pending",
+                "Accepted": "accepted",
+                "In Progress": "progress",
+                "Resolved": "resolved",
+                "Rejected": "rejected"
+            }[c.status] || "pending";
 
-// ==========================================
-// Recent Complaints Table
-// ==========================================
-
-const table = document.getElementById("recentComplaints");
-
-table.innerHTML = "";
-
-if (complaints.length === 0) {
-
-    table.innerHTML = `
-    <tr>
-        <td colspan="4">No Complaints Found</td>
-    </tr>
-    `;
-
-} else {
-
-    // Latest 5 complaints
-    complaints.slice().reverse().slice(0,5).forEach(c => {
-
-        table.innerHTML += `
-
-        <tr>
-
-            <td>${c.id}</td>
-
-            <td>${c.category}</td>
-
-            <td>${c.status}</td>
-
-            <td>
-
-                <a href="complaint-details.html?id=${c.id}">
-
-                    <button>View</button>
-
-                </a>
-
-            </td>
-
-        </tr>
-
+            tbody.innerHTML += `
+                <tr>
+                    <td class="fw-bold font-monospace text-primary">#${c.complaint_id}</td>
+                    <td class="fw-semibold">${c.title}</td>
+                    <td><span class="badge bg-secondary-subtle text-dark">${c.category}</span></td>
+                    <td class="small text-secondary">${c.department}</td>
+                    <td><span class="status-badge ${badgeClass}">${c.status}</span></td>
+                    <td class="small text-muted">${new Date(c.created_at).toLocaleDateString()}</td>
+                    <td>
+                        <a href="complaint-details.html?id=${c.complaint_id}" class="btn btn-sm btn-outline-primary fw-semibold">
+                            <i class="fa-solid fa-eye me-1"></i> View Details
+                        </a>
+                    </td>
+                </tr>
+            `;
+        });
+    } catch (error) {
+        console.error("Dashboard Load Error:", error);
+        document.getElementById("recentComplaints").innerHTML = `
+            <tr>
+                <td colspan="7" class="text-center py-4 text-danger">
+                    <i class="fa-solid fa-triangle-exclamation me-2"></i> Unable to connect to Django server.
+                </td>
+            </tr>
         `;
-
-    });
-
+    }
 }
 
-// ==========================================
-// Dashboard Animation
-// ==========================================
-
-document.querySelectorAll(".card").forEach((card,index)=>{
-
-    card.style.opacity="0";
-    card.style.transform="translateY(25px)";
-
-    setTimeout(()=>{
-
-        card.style.transition=".5s";
-
-        card.style.opacity="1";
-
-        card.style.transform="translateY(0)";
-
-    },index*150);
-
-});
+document.addEventListener("DOMContentLoaded", loadCitizenDashboard);
